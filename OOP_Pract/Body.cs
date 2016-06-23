@@ -14,13 +14,4 @@ namespace OOP_Pract
             this.hp = 100;
         }
     }
-
-    class CopyOfBody : Organ
-    {
-        public CopyOfBody()
-        {
-            this.name = "Тело";
-            this.hp = 100;
-        }
-    }
 }

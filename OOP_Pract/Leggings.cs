@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace OOP_Pract
 {
-    public class Helmet : Equipment
+    public class Leggings : Equipment
     {
-        public Helmet(int armor, string name)
+        public Leggings(int armor, string name)
         {
-            this.name = name;
             this.damage = 0; this.armor = armor;
-            this.organ = "Голова";
+            this.name = name;
+            this.organ = "Нога";
         }
     }
 }

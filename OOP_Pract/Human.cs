@@ -8,10 +8,11 @@ namespace OOP_Pract
 {
     class Human
     {
+        public Item[] inventory;
         Head head;
         private Body body;
         Hand rightHand, leftHand;
         Leg rightLeg, leftLeg;
-
     }
+
 }

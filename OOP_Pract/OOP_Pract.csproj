@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Armor.cs" />
     <Compile Include="Body.cs" />
+    <Compile Include="Bracer.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="Head.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Human.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Leg.cs" />
+    <Compile Include="Leggings.cs" />
     <Compile Include="Organ.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

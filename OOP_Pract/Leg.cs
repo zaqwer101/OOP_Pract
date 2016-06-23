@@ -15,12 +15,4 @@ namespace OOP_Pract
         }
     }
 
-    class CopyOfLeg : Organ
-    {
-        public CopyOfLeg()
-        {
-            this.hp = 30;
-            this.name = "Нога";
-        }
-    }
 }

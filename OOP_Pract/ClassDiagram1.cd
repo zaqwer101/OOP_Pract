@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OOP_Pract.Equipment">
-    <Position X="3.25" Y="4.75" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAABAAAABAAAAA=</HashCode>
       <FileName>Equipment.cs</FileName>
@@ -36,7 +36,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OOP_Pract.Item">
-    <Position X="1" Y="4.75" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA=</HashCode>
       <FileName>Item.cs</FileName>
@@ -64,10 +64,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OOP_Pract.Helmet">
-    <Position X="5.5" Y="4.75" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Helmet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOP_Pract.Bracer">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bracer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
