@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOP_Pract
 {
-    class Program
+    class Human
     {
-        static void Main(string[] args)
-        {
+        Head head;
+        private Body body;
+        Hand rightHand, leftHand;
+        Leg rightLeg, leftLeg;
 
-        }
     }
 }

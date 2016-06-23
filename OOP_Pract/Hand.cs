@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOP_Pract
 {
-    class Program
+    class Hand : Organ
     {
-        static void Main(string[] args)
+        public Hand()
         {
-
+            this.name = "Рука";
+            this.hp = 30;
         }
     }
 }
