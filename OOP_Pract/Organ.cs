@@ -8,21 +8,18 @@ namespace OOP_Pract
 {
     class Organ
     {
+        public Human        owner;
         public bool         blocked;            //Может ли данная часть тела функционировать
         public Equipment    equipment;          //Надетая шмотка. Управлять шмотками будет непосредственно человек
         public string       name;
-        public int          hp                  //Состояние части тела
-        {
-            get
-            {
-                return this.hp;
-            }
+        public int          armor;
+        public int          hp;                 //Состояние части тела
 
-            set
-            {
-                this.hp = value >= 0 ? value : 0;
-            }
-        } 
+        public Organ(Human human)
+        {
+            this.owner = human;
+            this.armor = 0;
+        }
 
         public void heal(int hp)                //Лечение части
         {
@@ -32,6 +29,13 @@ namespace OOP_Pract
         public void damage(int hp)              //Повреждение части 
         {
             this.hp -= hp;
+            if(this.hp <= 0)
+            {
+                blocked = true;
+                owner.start_bleeding();
+            }
         }
+
+        
     }
 }

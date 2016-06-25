@@ -12,6 +12,7 @@ namespace OOP_Pract
             this.name = name;
             this.damage = 0; this.armor = armor;
             this.organ = "Голова";
+            
         }
     }
 }

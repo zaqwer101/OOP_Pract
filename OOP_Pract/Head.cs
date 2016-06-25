@@ -8,19 +8,11 @@ namespace OOP_Pract
 {
     class Head : Organ
     {
-        public Head()
+        public Head(Human human) : base(human)
         {
             this.name = "Голова";
-            this.hp = 40;
+            this.hp = 30;
         }
     }
 
-    class CopyOfHead : Organ
-    {
-        public CopyOfHead()
-        {
-            this.name = "Голова";
-            this.hp = 40;
-        }
-    }
 }

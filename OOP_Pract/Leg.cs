@@ -8,7 +8,7 @@ namespace OOP_Pract
 {
     class Leg : Organ
     {
-        public Leg()
+        public Leg(Human human) : base(human)
         {
             this.hp = 30;
             this.name = "Нога";
