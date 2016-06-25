@@ -67,27 +67,27 @@ namespace OOP_Pract
                     Program.log += name + " промазал\n";
                     break;
                 case 1:
-                    target.head.damage(this.total_damage - target.head.armor);
+                    target.head.damage(this.total_damage);
                     Program.log += name + " стукнул " + target.name + " по голове " + target.head.hp + "\n";
                     break;
                 case 2:
-                    target.body.damage(this.total_damage - target.body.armor);
+                    target.body.damage(this.total_damage);
                     Program.log += name + " стукнул " + target.name + " по телу " + target.body.hp + "\n";
                     break;
                 case 3:
-                    target.rightHand.damage(this.total_damage - target.rightHand.armor);
+                    target.rightHand.damage(this.total_damage);
                     Program.log += name + " стукнул " + target.name + " по правой руке " + target.rightHand.hp + "\n";
                     break;
                 case 4:
-                    target.leftHand.damage(this.total_damage - target.leftHand.armor);
+                    target.leftHand.damage(this.total_damage);
                     Program.log += name + " стукнул " + target.name + " по левой руке " + target.leftHand.hp + "\n";
                     break;
                 case 5:
-                    target.rightLeg.damage(this.total_damage - target.rightLeg.armor);
+                    target.rightLeg.damage(this.total_damage);
                     Program.log += name + " стукнул " + target.name + " по правой ноге " + target.rightLeg.hp + "\n";
                     break;
                 case 6:
-                    target.leftLeg.damage(this.total_damage - target.leftLeg.armor);
+                    target.leftLeg.damage(this.total_damage);
                     Program.log += name + " стукнул " + target.name + " по левой ноге " + target.leftLeg.hp + "\n";
                     break;
             }
@@ -97,14 +97,7 @@ namespace OOP_Pract
                 if (chance_for_bleeding > new Random().Next(100))
                 {
                     //Враг начинает кровоточить
-                    if (!target.isBleeding)
-                    {
-                        target.start_bleeding();
-                    }
-                    else //Или кровотечение усиливается, если враг уже был ранен
-                    {
-                        target.bleeding_power += 5;
-                    }
+                    target.start_bleeding();
                 }
             }
         }        
@@ -116,7 +109,7 @@ namespace OOP_Pract
                 isBleeding = true;
                 onStep += bleed;
             }
-            else
+            else                                        //Или кровотечение усиливается, если враг уже был ранен
             {
                 bleeding_power += 5;
             }

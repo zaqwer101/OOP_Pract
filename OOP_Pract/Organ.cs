@@ -28,7 +28,7 @@ namespace OOP_Pract
 
         public void damage(int hp)              //Повреждение части 
         {
-            this.hp -= hp;
+            this.hp -= (hp - armor);
             if(this.hp <= 0)
             {
                 blocked = true;
