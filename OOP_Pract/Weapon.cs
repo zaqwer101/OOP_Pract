@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP_Pract
 {
-    class Program
+    public abstract class Weapon : Equipment
     {
-        public static string log;
-        static void Main(string[] args)
-        {
-
-        }
+        public int damage;
+        public abstract void attack(Human target);
     }
 }

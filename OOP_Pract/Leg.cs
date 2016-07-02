@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Pract
 {
-    class Leg : Organ
+    public class Leg : Organ
     {
         public Leg(Human human) : base(human)
         {

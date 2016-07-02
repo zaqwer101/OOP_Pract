@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP_Pract
 {
-    class Organ
+    public class Organ
     {
         public Human        owner;
         public bool         blocked;            //Может ли данная часть тела функционировать
-        public Equipment    equipment;          //Надетая шмотка. Управлять шмотками будет непосредственно человек
         public string       name;
         public int          armor;
         public int          hp;                 //Состояние части тела
@@ -35,6 +34,7 @@ namespace OOP_Pract
                 owner.start_bleeding();
             }
         }
+
 
         
     }

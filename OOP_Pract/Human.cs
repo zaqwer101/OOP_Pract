@@ -7,22 +7,21 @@ using System.Windows.Forms;
 
 namespace OOP_Pract
 {
-    class Human
+    public class Human
     {
-        public int      total_damage, base_damage;
-        public int      blood;                          //Кровь чела
-        public int      bleeding_power;                 //Сила кровотечения int/шаг
-        public int      chance_for_bleeding;            //Шанс заставить противника кровоточить
-        public bool     isBleeding = false;
-        public string   name;
-        public Item[]   inventory;
-        Head            head;
-        private Body    body;
-        Hand            rightHand, 
-                        leftHand;
-        Leg             rightLeg, 
-                        leftLeg;
-
+        public Human target;
+        public Armor armor;
+        public int total_damage, base_damage;
+        public int blood;                          //Кровь чела
+        public int bleeding_power;                 //Сила кровотечения int/шаг
+        public int chance_for_bleeding;            //Шанс заставить противника кровоточить
+        public bool isBleeding = false;
+        public string name;
+        public List<Item> inventory;
+        public Head head;
+        public Body body;
+        public Hand rightHand,leftHand;
+        public Leg rightLeg,leftLeg;
         public Human(string name)
         {
             this.name = name;
@@ -33,21 +32,23 @@ namespace OOP_Pract
             base_damage = 5;
             total_damage = base_damage;
             this.blood = 100;
+            inventory = new List<Item>();
             #region Конечности
-            rightHand = new Hand();
-            leftHand = new Hand();
-            head = new Head();
-            body = new Body();
-            rightLeg = new Leg();
-            leftLeg = new Leg();
+            rightHand = new Hand(this);
+            leftHand = new Hand(this);
+            head = new Head(this);
+            body = new Body(this);
+            rightLeg = new Leg(this);
+            leftLeg = new Leg(this);
             #endregion
-            inventory = new Item[10];
-        }
 
+        }
+        public delegate void effects();                 //Делегат без параметров для обработки различных эффектов
+        public delegate void Attack(Human target);      //Делегат для атаки 
+        public event effects onTakeDamage;              //Действие при получение урона
         public event effects onStep;                    //Действие на каждый ход чела
-        public delegate void effects();
-        public delegate void Attack(Human target);      
         public event Attack onAttack;                   //Действие на атаку другого чела со всякими орб-эффектами
+        /*TODO: Реализовать событие onDead */
         public event effects onDead;                    //Действие на смерть чела
         public bool isAlive()                           //Чел погибает лишь при уничтожении тела или головы или от потери крови
 
@@ -60,6 +61,7 @@ namespace OOP_Pract
         }
         public void base_attack(Human target)           //Базовая атака без оружия/орб-эффектов/прочего
         {
+            this.target = target;
             int limb_to_hurt = new Random().Next(7);
             switch (limb_to_hurt)
             {
@@ -100,7 +102,7 @@ namespace OOP_Pract
                     target.start_bleeding();
                 }
             }
-        }        
+        }
         public void start_bleeding()                    //Начало кровотечения
         {
             if (!isBleeding)
@@ -113,7 +115,7 @@ namespace OOP_Pract
             {
                 bleeding_power += 5;
             }
-        }                 
+        }
         public void stop_bleeding()                     //Конец кровотечения
 
         {
@@ -123,16 +125,16 @@ namespace OOP_Pract
                 onStep -= bleed;
                 bleeding_power = 0;
             }
-        }                                                         
+        }
         public void bleed()                             //Кровотечение
         {
             blood -= bleeding_power;
             Program.log += name + " кровоточит " + blood;
             if (blood < 0) blood = 0;
         }
-        public void _step()
+        private void _step()
         {
-            if(isAlive() == false)
+            if (isAlive() == false)
             {
                 onDead();
             }
@@ -141,9 +143,57 @@ namespace OOP_Pract
         {
             onAttack(target);
         }
-        public void step()
+        public void step()                              //Действие на каждый ход чела
         {
             this.onStep();
+        }
+        public void equip(Armor armor)
+        {
+            armor.equip(this);
+        }               //Надеть комплект брони
+        public void unequipArmor()                      //Снять броню
+        {
+            this.armor.unequip(this);
+        }                   
+        public void equip(Weapon weapon)                //Взять в руки оружие
+        {
+            if (!rightHand.blocked) //Если правая рука работоспособна
+            {
+                unequip(rightHand); //Снимаем оружие
+                rightHand.equipment = weapon;//Надеваем новое
+                total_damage += weapon.damage;//Прибавляем урон
+                onAttack += weapon.attack;    //Устанавливаем модификаторы
+            }
+        }             
+        public void unequip(Hand hand)                  //Снять оружие
+        {
+            if (hand.equipment != null)
+            {
+                total_damage -= hand.equipment.damage;
+                onAttack -= hand.equipment.attack;
+                if(isInventoryFull())
+                {
+                    drop(hand.equipment);
+                }
+                else
+                {
+                    inventory.Add(hand.equipment);
+                }
+                hand.equipment = null;
+            }
+        }
+        public void drop(Equipment equipment)           //Выбросить вещь
+        {
+            throw new NotImplementedException();
+            //TODO: Реализовать выброс предметов
+        }
+        public bool isInventoryFull()
+        {
+            if (inventory.Count >= 20)
+            {
+                return true;
+            }
+            else return false;
         }
     }
 }

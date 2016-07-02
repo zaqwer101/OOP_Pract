@@ -6,17 +6,16 @@ using System.Threading.Tasks;
                                     //Предмет экипировки    
 namespace OOP_Pract
 {
-    public class Equipment : Item       
+    public abstract class Equipment : Item       
                                     
     {
-        
-        public string   organ;      //Часть тела, на которую эта хня надевается 
-        public int      armor,      //Броня, добавляемая предметом
-                        damage;     //Урон предмета
+
 
         public override void use()
         {
             throw new NotImplementedException();
         }
+
+        //public abstract void attack(Human target);
     }
 }
